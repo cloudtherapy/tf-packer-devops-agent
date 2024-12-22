@@ -7,11 +7,7 @@ output "client_secret" {
 }
 
 output "subscription_id" {
-  value = var.subscription_id
-}
-
-output "label" {
-  value = var.label
+  value = data.azurerm_subscription.this.id
 }
 
 output "resource_group" {
