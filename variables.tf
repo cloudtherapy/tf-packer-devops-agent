@@ -1,20 +1,14 @@
-variable "label" {
-  type        = string
-  description = "A description of the target environment platform"
-  default     = "sample"
-}
-
 ## Azure connection details
 
-variable "tenant_id" {
-  type        = string
-  description = "Azure AD directory/tenant ID"
-}
+#variable "tenant_id" {
+#  type        = string
+#  description = "Azure AD directory/tenant ID"
+#}
 
-variable "subscription_id" {
-  type        = string
-  description = "Azure Subscription ID"
-}
+#variable "subscription_id" {
+#  type        = string
+#  description = "Azure Subscription ID"
+#}
 
 ## Azure resource details
 
@@ -33,11 +27,13 @@ variable "resource_group" {
 variable "vnet_name" {
   type        = string
   description = "Name of the virtual network"
+  default = "vnet-shared-10-65-0"
 }
 
 variable "subnet_name" {
   type        = string
   description = "Name of the virtual network subnet"
+  default = "snet-shared-10-60-0-0"
 }
 
 variable "compute_gallery_name" {
