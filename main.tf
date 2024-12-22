@@ -29,7 +29,7 @@ resource "azuread_application" "this" {
 }
 
 resource "azuread_service_principal" "this" {
-  application_id = azuread_application.this.application_id
+  client_id = azuread_application.this.client_id
 }
 
 #@@@ Create a client secret for the App Registration. No foreseeable expiration
