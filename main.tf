@@ -76,16 +76,13 @@ resource "azurerm_shared_image" "this" {
 #@@@ Create an Azure Image using Packer and push to the compute gallery
 
 resource "null_resource" "packer" {
-  #provisioner "local-exec" {
-  #  command = "export ARM_SUBSCRIPTION_ID="$(az account list --query '[?isDefault].id' --output tsv)"
-  #}
   provisioner "local-exec" {
     working_dir = "../"
     command     = <<EOF
       packer build -force \
-        -var client_id=${azuread_application.this.application_id} \
+        -var client_id=${azuread_application.this.client_id} \
         -var client_secret=${azuread_application_password.this.value} \
-        -var subscription_id=${ARM_SUBSCRIPTION_ID} \
+        -var subscription_id=${data.azurerm_subscription.this.id} \
         -var label=${var.label} \
         -var resource_group=${var.resource_group} \
         -var vnet_name=${var.vnet_name} \
