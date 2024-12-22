@@ -83,7 +83,6 @@ resource "null_resource" "packer" {
         -var client_id=${azuread_application.this.client_id} \
         -var client_secret=${azuread_application_password.this.value} \
         -var subscription_id=${data.azurerm_subscription.this.id} \
-        -var label=${var.label} \
         -var resource_group=${var.resource_group} \
         -var vnet_name=${var.vnet_name} \
         -var subnet_name=${var.subnet_name} \
