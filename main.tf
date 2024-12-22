@@ -36,7 +36,7 @@ resource "azuread_service_principal" "this" {
 
 resource "azuread_application_password" "this" {
   end_date              = "2299-12-30T23:00:00Z"
-  application_object_id = azuread_application.this.object_id
+  application_id = azuread_application.this.id
 }
 
 #@@@ Assign 'Contributor' role for the Service Principal in the Azure Subscription
