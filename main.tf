@@ -76,9 +76,9 @@ resource "azurerm_shared_image" "this" {
 #@@@ Create an Azure Image using Packer and push to the compute gallery
 
 resource "null_resource" "packer" {
-  provisioner "local-exec" {
-    command = "export ARM_SUBSCRIPTION_ID="$(az account list --query '[?isDefault].id' --output tsv)"
-  }
+  #provisioner "local-exec" {
+  #  command = "export ARM_SUBSCRIPTION_ID="$(az account list --query '[?isDefault].id' --output tsv)"
+  #}
   provisioner "local-exec" {
     working_dir = "../"
     command     = <<EOF
