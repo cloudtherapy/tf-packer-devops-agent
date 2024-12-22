@@ -14,7 +14,7 @@ terraform {
 # Azure Active Directory provider
 # https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
 provider "azuread" {
-  tenant_id = var.tenant_id
+
 }
 
 # Azure Resource Manager provider
