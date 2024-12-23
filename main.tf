@@ -63,10 +63,6 @@ resource "null_resource" "packer" {
         packer/azure-methods-devops.pkr.hcl
     EOF
   }
-
-  depends_on = [
-    azurerm_role_assignment.this
-  ]
 }
 
 #@@@ Create a Virtual Machine Scale Set (VMSS)
