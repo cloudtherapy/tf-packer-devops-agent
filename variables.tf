@@ -1,13 +1,27 @@
 ## Azure connection details
 
-#variable "tenant_id" {
-#  type        = string
-#  description = "Azure AD directory/tenant ID"
-#}
+variable "tenant_id" {
+  type        = string
+  sensitive = true
+  description = "Azure AD directory/tenant ID"
+}
 
 variable "subscription_id" {
   type        = string
+  sensitive = true
   description = "Azure Subscription ID"
+}
+
+variable "client_id" {
+  type        = string
+  sensitive = true
+  description = "Client ID of Application"
+}
+
+variable "client_secret" {
+  type        = string
+  sensitive = true
+  description = "Client secret of Application"
 }
 
 ## Azure resource details
@@ -27,13 +41,13 @@ variable "resource_group" {
 variable "vnet_name" {
   type        = string
   description = "Name of the virtual network"
-  default = "vnet-shared-10-65-0"
+  default = "vnet-shared-10-157-0"
 }
 
 variable "subnet_name" {
   type        = string
   description = "Name of the virtual network subnet"
-  default = "snet-shared-10-60-0-0"
+  default = "snet-shared-10-157-0-0"
 }
 
 variable "compute_gallery_name" {

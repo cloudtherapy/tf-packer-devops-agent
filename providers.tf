@@ -13,13 +13,14 @@ terraform {
 
 # Azure Active Directory provider
 # https://registry.terraform.io/providers/hashicorp/azuread/latest/docs
-provider "azuread" {
-
-}
+provider "azuread" {}
 
 # Azure Resource Manager provider
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 provider "azurerm" {
   features {}
   subscription_id = var.subscription_id
+  tenant_id = var.tenant_id
+  client_id = var.client_id
+  client_secret = var.client_secret
 }
