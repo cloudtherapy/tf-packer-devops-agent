@@ -45,26 +45,6 @@ resource "azurerm_shared_image" "this" {
   }
 }
 
-#@@@ Create an Azure Image using Packer and push to the compute gallery
-
-resource "null_resource" "packer" {
-  provisioner "local-exec" {
-    working_dir = "../"
-    command     = <<EOF
-      packer build -force \
-        -var client_id=${var.client_id} \
-        -var client_secret=${var.client_secret} \
-        -var subscription_id=${data.azurerm_subscription.this.id} \
-        -var resource_group=${var.resource_group} \
-        -var vnet_name=${var.vnet_name} \
-        -var subnet_name=${var.subnet_name} \
-        -var compute_gallery_name=${var.compute_gallery_name} \
-        -var image_name=${var.image_name} \
-        packer/azure-methods-devops.pkr.hcl
-    EOF
-  }
-}
-
 #@@@ Create a Virtual Machine Scale Set (VMSS)
 
 resource "azurerm_linux_virtual_machine_scale_set" "this" {

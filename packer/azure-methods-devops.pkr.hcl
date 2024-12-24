@@ -12,10 +12,6 @@ variable "subscription_id" {
   type = string
 }
 
-variable "label" {
-  type = string
-}
-
 variable "resource_group" {
   type    = string
   default = "rg-shared-services"
