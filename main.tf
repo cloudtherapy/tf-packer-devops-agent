@@ -61,10 +61,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
   instances                       = 0
   disable_password_authentication = false
   admin_username                  = "ansible"
-  admin_ssh_key {
-    username   = "ansible"
-    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCTD8HrwW7d5xvgs0o0dXkyNFdgZwab4G9Ok2Irh7uuk0OOW/U9QyePpfHzDboSsyfSGjwG3qzn6zKncq1vg2YmaR2oOm555T5D3/faGdJ1UJbx5hqiogkfw4hXMreg/u9Ah9CuucDUKwRxQC/MhpVrGb1MAEuDd5ZKPT6QF99ssgno/ibrHdraENMsZu+FxmJZ/Ukmi6ik8eJYRlSvAEZXw2hQIEcEaYejWMnNmE06ys5xjQe30pmV2a/Wxg4NN2MrDFzCssSDARAMak5v0vGkLGTsJYx56NaKLqnOudkKnPkXK/AvvEB26L1F1kaZLyR0jrzjTuKKEuqUJReKf/MV"
-  }
+  disable_password_authentication = true
 
   source_image_id                 = "${azurerm_shared_image.this.id}/versions/latest"
 
