@@ -84,6 +84,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
     }
   }
   depends_on = [
-    azurerm_image.this
+    data.azurerm_image.this
   ]
 }
