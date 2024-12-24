@@ -19,6 +19,12 @@ data "azurerm_subnet" "this" {
   virtual_network_name = data.azurerm_virtual_network.this.name
 }
 
+# Data Source: Image Creation
+data "azurerm_image" this {
+  name = var.image_name
+  resource_group_name = data.azurerm_resource_group.this.name
+}
+
 #@@@ Create an Azure Compute Gallery
 
 resource "azurerm_shared_image_gallery" "this" {
@@ -54,8 +60,12 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
   sku                             = "Standard_B2s"
   instances                       = 0
   disable_password_authentication = false
-  admin_username                  = "devops"
-  admin_password                  = "Dev0ps123!"
+  admin_username                  = "ansible"
+  admin_ssh_key {
+    username   = "ansible"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCTD8HrwW7d5xvgs0o0dXkyNFdgZwab4G9Ok2Irh7uuk0OOW/U9QyePpfHzDboSsyfSGjwG3qzn6zKncq1vg2YmaR2oOm555T5D3/faGdJ1UJbx5hqiogkfw4hXMreg/u9Ah9CuucDUKwRxQC/MhpVrGb1MAEuDd5ZKPT6QF99ssgno/ibrHdraENMsZu+FxmJZ/Ukmi6ik8eJYRlSvAEZXw2hQIEcEaYejWMnNmE06ys5xjQe30pmV2a/Wxg4NN2MrDFzCssSDARAMak5v0vGkLGTsJYx56NaKLqnOudkKnPkXK/AvvEB26L1F1kaZLyR0jrzjTuKKEuqUJReKf/MV"
+  }
+
   source_image_id                 = "${azurerm_shared_image.this.id}/versions/latest"
 
   os_disk {
@@ -73,4 +83,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
       subnet_id = data.azurerm_subnet.this.id
     }
   }
+  depends_on = [
+    azurerm_image.this
+  ]
 }
