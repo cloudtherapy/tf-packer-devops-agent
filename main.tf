@@ -73,8 +73,4 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
       subnet_id = data.azurerm_subnet.this.id
     }
   }
-
-  depends_on = [
-    null_resource.packer
-  ]
 }
