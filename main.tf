@@ -20,7 +20,7 @@ data "azurerm_subnet" "this" {
 }
 
 # Data Source: Image Creation
-data "azurerm_image" this {
+data "azurerm_image" "this" {
   name = var.image_name
   resource_group_name = data.azurerm_resource_group.this.name
 }
