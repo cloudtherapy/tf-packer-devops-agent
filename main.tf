@@ -59,9 +59,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "this" {
   location                        = data.azurerm_resource_group.this.location
   sku                             = "Standard_B2s"
   instances                       = 0
-  disable_password_authentication = false
-  admin_username                  = "ansible"
   disable_password_authentication = true
+  admin_username                  = "ansible"
 
   source_image_id                 = "${azurerm_shared_image.this.id}/versions/latest"
 
